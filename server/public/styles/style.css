@@ -1,13 +1,22 @@
 body{
-   background-color: lightcyan;
-    border: 20px solid teal;
+    background-color: dodgerblue;
 }
 
 .Y {
     display: none;
 }
 
+input{
+  border-radius: 5px;
+  height: 40px;
+  width:100px;
+}
 
+#addButton{
+  border-radius: 5px;
+  height: 40px;
+  width: 100px;
+}
 
 
 #table-container {
