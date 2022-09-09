@@ -39,6 +39,7 @@ function renderKoalas (koalas){
         <td>${koala.gender}</td>
         <td>${koala.readyForTransfer}</td>
         <td>${koala.notes}</td>
+        <td><button class="${koala.readyForTransfer}">Ready For Transfer</button></td>
       </tr>
     `);
   }
