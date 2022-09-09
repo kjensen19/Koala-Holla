@@ -11,6 +11,7 @@ $( document ).ready( function(){
 
 function setupClickListeners() {
   $( '#addButton' ).on( 'click', addKoala);
+  $('#viewKoalas').on('click', '.N', markAsReady)
 }
 
 function getKoalas(){
@@ -33,7 +34,7 @@ function renderKoalas (koalas){
 
   for(let koala of koalas){
     $('#viewKoalas').append(`
-      <tr data-id"${koala.id}>
+      <tr data-id="${koala.id}">
         <td>${koala.name}</td>
         <td>${koala.age}</td>
         <td>${koala.gender}</td>
@@ -61,7 +62,7 @@ function addKoala () {
     data: koalaToSend
   }).then(function(response){
     console.log(response);
-    renderKoalas(response);
+    getKoalas();
     $('#nameIn').val('');
     $('#ageIn').val('');
     $('#genderIn').val('');
@@ -74,4 +75,18 @@ function addKoala () {
   
 
   };
+
+  function markAsReady() {
+    let koalaToMarkReady = $(this).closest('tr').data('id')
+    console.log(koalaToMarkReady)
+    $.ajax({
+      method: 'PUT',
+      url: `/koalas/${koalaToMarkReady}`
+    }).then((response) => {
+      getKoalas()
+    }).catch(function(error){
+      console.log('error in Koala PUT', error)
+      alert('Error marked as ready');
+    })
+  }
  

@@ -50,6 +50,25 @@ koalaRouter.post('/', (req, res) => {
 });
 
 // PUT
+koalaRouter.put('/:id', (req, res) => {
+    console.log(req.params)
+    const koalaId = req.params.id
+
+    const sqlQuery = `
+    UPDATE "koalas"
+      SET "readyForTransfer"='Y'
+      WHERE "id" = $1;
+    `;
+    
+    const sqlValues = [koalaId]
+    db.query(sqlQuery, sqlValues)
+        .then((dbRes) => {
+            res.sendStatus(200);
+        })
+        .catch((dbErr) => {
+            console.log('something broke in PUT', dbErr)
+        })
+})
 
 
 // DELETE
