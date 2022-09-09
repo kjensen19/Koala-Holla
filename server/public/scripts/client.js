@@ -45,17 +45,33 @@ function renderKoalas (koalas){
   }
 }
 
-function addKoala( newKoala ){
-  console.log( 'in saveKoala', newKoala );
-  // ajax call to server to get koalas
-  
-  //moved from click listener function
+function addKoala () {
   let koalaToSend = {
-    name: 'testName',
-    age: 'testName',
-    gender: 'testName',
-    readyForTransfer: 'testName',
-    notes: 'testName',
+    name: $('#nameIn').val(),
+    age: $('#ageIn').val(),
+    gender: $('#genderIn').val(),
+    readyForTransfer: $('#readyForTransferIn').val(),
+    notes: $('#notesIn').val(),
+  }
+  // console.log( 'in addKoala', koalaToSend );
+  // ajax call to server to get koalas
+  $.ajax({
+    type: 'POST',
+    url: '/koalas',
+    data: koalaToSend
+  }).then(function(response){
+    console.log(response);
+    renderKoalas(response);
+    $('#nameIn').val('');
+    $('#ageIn').val('');
+    $('#genderIn').val('');
+    $('#readyForTransferIn').val('');
+    $('#notesIn').val('');
+  }).catch(function(error){
+    console.log('error in Koala post', error);
+    alert('Error adding Koala.  Please try again!');
+  });
+  
+
   };
  
-}
