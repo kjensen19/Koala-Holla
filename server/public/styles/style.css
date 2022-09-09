@@ -23,19 +23,19 @@ input{
     display: flex;
     align-items: left;
     align-content:space-between;
-    border: 1rem solid darkslateblue;
+    border: 1rem solid teal;
     border-radius: 1rem;
     background-color: white;
   }
 
   table {
     border-collapse: collapse;
-    border: 1px solid darkslateblue;
+    border: 1px solid teal;
     text-align: center;
 	vertical-align: middle;
     width: 100%;
     font-size: 2rem;
-    color:crimson ;
+    color: slategray ;
     min-height: 10rem;
     border-right: 1rem solid darkslateblue;
     background-color: white;
